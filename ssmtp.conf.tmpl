@@ -12,10 +12,12 @@ hostname={{.Env.SSMTP_FROM_HOSTNAME}}
 UseTLS={{.Env.SSMTP_USE_TLS}}
 UseSTARTTLS={{.Env.SSMTP_USE_STARLTLS}}
 
+{{if .Env.SSMTP_AUTH_METHOD}}
 # Username/Password
 AuthUser={{.Env.SSMTP_AUTH_USER}}
 AuthPass={{.Env.SSMTP_AUTH_PASSWORD}}
-AuthMethod=LOGIN
+AuthMethod={{.Env.SSMTP_AUTH_METHOD}}
+{{end}}
 
 # Email 'From header's can override the default domain?
 FromLineOverride=yes
