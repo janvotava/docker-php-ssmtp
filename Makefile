@@ -1,7 +1,7 @@
 .PHONY: build
 build:
-	docker build -t harobed/php-ssmtp:7-apache .
+	docker build -t votava/php-ssmtp:5.6.40-apache .
 
 .PHONY: upload
 upload:
-	docker push harobed/php-ssmtp:7-apache
+	docker push votava/php-ssmtp:5.6.40-apache
