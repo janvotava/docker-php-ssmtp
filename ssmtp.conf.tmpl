@@ -5,9 +5,6 @@ root=postmaster
 # See also https://support.google.com/mail/answer/78799
 mailhub={{.Env.SSMTP_HOST}}:{{.Env.SSMTP_PORT}}
 
-# The address where the mail appears to come from for user authentication.
-rewriteDomain=gmail.com
-
 # The full hostname.  Must be correctly formed, fully qualified domain name or GMail will reject connection.
 hostname={{.Env.SSMTP_FROM_HOSTNAME}}
 
