@@ -4,9 +4,20 @@ RUN curl -L https://github.com/hairyhenderson/gomplate/releases/download/v2.3.0/
   chmod u+x /usr/local/bin/gomplate
 
 RUN apt-get update && \
-  apt-get install -y ssmtp libgd-dev && \
+  apt-get install -y ssmtp libgd-dev libwebp-dev \
+    libjpeg62-turbo-dev \
+    libpng-dev libxpm-dev \
+    libfreetype6-dev && \
   apt-get clean && \
   echo 'sendmail_path = "/usr/sbin/ssmtp -t"' > /usr/local/etc/php/conf.d/mail.ini && \
+  docker-php-ext-configure gd \
+    --with-gd \
+    --with-jpeg-dir \
+    --with-png-dir \
+    --with-zlib-dir \
+    --with-xpm-dir \
+    --with-freetype-dir \
+    --enable-gd-native-ttf && \
   docker-php-ext-install mysql gd
 
 ENV SSMTP_HOST=postfix \
